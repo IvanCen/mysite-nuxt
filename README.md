@@ -1,4 +1,4 @@
-# raklechitsya
+# mysite-nuxt
 
 > My unreal Nuxt.js project
 
