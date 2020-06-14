@@ -139,10 +139,6 @@ export default {
     width: 100%;
   }
 
-  &__quote {
-    quotes: '\00ab''\00bb';
-  }
-
   &__title {
     font-size: 36px;
     margin-top: 35px;
@@ -153,8 +149,12 @@ export default {
     width: 100%;
   }
 
+  &__text {
+    margin-bottom: 10px;
+  }
+
   &__image-title {
-    font-size: 32px;
+    font-size: 28px;
     margin-bottom: 10px;
   }
 

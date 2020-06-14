@@ -3,6 +3,7 @@
     <description-section />
     <about-section />
     <skill-section />
+    <a class="button-up" href="#main">&and;</a>
   </div>
 </template>
 
@@ -25,4 +26,23 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.button-up {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #000000;
+  border-radius: 50%;
+  font-size: 25px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 40px;
+  color: #ffffff;
+  z-index: 10;
+  font-weight: 700;
+  transition: opacity 0.1s ease-out;
+  border-width: 0 3px 3px 0;
+}
+</style>

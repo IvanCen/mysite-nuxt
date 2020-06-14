@@ -1,16 +1,20 @@
 <template>
   <div>
+    <a href="" id="main"></a>
     <main-header />
     <nuxt />
+    <main-footer />
   </div>
 </template>
 
 <script>
 import Header from '~/components/Header'
+import Footer from '~/components/Footer'
 
 export default {
   components: {
     'main-header': Header,
+    'main-footer': Footer,
   },
 }
 </script>
@@ -26,6 +30,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 a {
