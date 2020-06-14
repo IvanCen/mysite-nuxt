@@ -41,6 +41,7 @@ export default {
 
   &__subtitle {
     font-size: 32px;
+    font-weight: normal;
   }
 }
 </style>

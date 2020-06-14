@@ -29,8 +29,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
-  padding: 0 40px;
+  min-height: 350px;
+  padding: 40px;
 
   &__container {
     align-items: normal;
@@ -39,7 +39,7 @@ export default {
   &__text-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    grid-gap: 10px;
+    grid-gap: 20px;
   }
 
   &__title {
