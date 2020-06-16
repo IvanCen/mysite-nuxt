@@ -1,5 +1,5 @@
 <template>
-  <section class="about">
+  <section :class="[`about`, `about_theme_${getIsThemeLight}`]">
     <div class="container about__container">
       <h2 class="title about__title">Обо мне</h2>
       <div class="about__text-container">
@@ -21,6 +21,16 @@
 <script>
 export default {
   name: 'About',
+  methods: {
+    switchTheme() {
+      this.$store.commit('pageTheme/switchTheme')
+    },
+  },
+  computed: {
+    getIsThemeLight() {
+      return this.$store.getters['pageTheme/getIsThemeLight']
+    },
+  },
 }
 </script>
 
@@ -31,6 +41,16 @@ export default {
   justify-content: center;
   min-height: 350px;
   padding: 40px;
+
+  &_theme_light {
+    background-color: white;
+    color: black;
+  }
+
+  &_theme_dark {
+    background-color: #474a4c;
+    color: white;
+  }
 
   &__container {
     align-items: normal;

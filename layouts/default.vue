@@ -9,7 +9,7 @@
     </transition>
     <transition name="popup__fade">
       <popup v-if="popupShown" @closeClick="togglePopup" theme="light">
-        <my-form @input="showConsoleInputValue" />
+        <my-form />
       </popup>
     </transition>
   </div>
@@ -33,10 +33,6 @@ export default {
   methods: {
     togglePopup() {
       this.$store.commit('popup/togglePopup')
-    },
-    showConsoleInputValue(value) {
-      console.log(value)
-      console.log(this.name)
     },
   },
   computed: {

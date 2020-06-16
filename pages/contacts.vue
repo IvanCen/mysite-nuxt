@@ -10,7 +10,11 @@
         <span class="contacts__link" @click="openAboutSection">Посмотри!</span>
       </p>
 
-      <button-form theme="sky" indentDirection="bottom" @btnClick="togglePopup"
+      <button-form
+        class="contacts__button"
+        theme="sky"
+        indentDirection="bottom"
+        @btnClick="togglePopup"
         >Написать
       </button-form>
       <a
@@ -78,28 +82,13 @@ export default {
   &__button {
     position: relative;
     border: none;
+    outline: none;
+    transition: opacity 0.2s ease-in;
     border-radius: 20px;
-
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: 0.5s;
-      border-radius: 20px;
-    }
-
-    &:hover:before {
-      opacity: 0.8;
-      border-radius: 20px;
-    }
+    color: black;
 
     &:hover {
-      opacity: 1;
-      transition: opacity 0.1s ease-in;
+      opacity: 0.8;
     }
   }
 

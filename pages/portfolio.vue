@@ -1,6 +1,13 @@
 <template>
-  <section class="portfolio" id="portfolio">
-    <h2 class="title portfolio__title">Портфолио</h2>
+  <section
+    :class="[`portfolio`, `portfolio_theme_${getIsThemeLight}`]"
+    id="portfolio"
+  >
+    <h2
+      :class="[`portfolio__title`, `portfolio__title_theme_${getIsThemeLight}`]"
+    >
+      Портфолио
+    </h2>
     <!--<div class="portfolio__card">
       <h3 class="title portfolio__image-title">Учебная страница</h3>
       <a href="https://ivancen.github.io/yandex__project_learn-to-learn/" class="link">
@@ -33,12 +40,30 @@
       <a href="https://github.com/IvanCen/museum_project" class="portfolio__link">githab</a>
     </div>-->
     <div v-for="card in cards" :key="card.id" class="portfolio__card">
-      <h3 class="title portfolio__image-title">{{ card.title }}</h3>
+      <h3
+        :class="[
+          `portfolio__image-title`,
+          `portfolio__image-title_theme_${getIsThemeLight}`,
+        ]"
+      >
+        {{ card.title }}
+      </h3>
       <a :href="card.demoLink">
         <img class="portfolio__image" :src="card.image" alt="фото проекта" />
-        <p class="portfolio__text">{{ card.text }}</p>
+        <p
+          :class="[
+            `portfolio__text`,
+            `portfolio__text_theme_${getIsThemeLight}`,
+          ]"
+        >
+          {{ card.text }}
+        </p>
       </a>
-      <a :href="card.githubLink" class="portfolio__link">github</a>
+      <a
+        :href="card.githubLink"
+        :class="[`portfolio__link`, `portfolio__link_theme_${getIsThemeLight}`]"
+        >github</a
+      >
     </div>
   </section>
 </template>
@@ -50,13 +75,15 @@ export default {
     cards() {
       return this.$store.getters['project/getProjectCards']
     },
+    getIsThemeLight() {
+      return this.$store.getters['pageTheme/getIsThemeLight']
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .portfolio {
-  background-color: #f6f6f6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -64,6 +91,14 @@ export default {
   justify-content: center;
   position: relative;
   padding: 0 20px;
+
+  &_theme_light {
+    background-color: #f6f6f6;
+  }
+
+  &_theme_dark {
+    background-color: #3d4f61;
+  }
 
   &__card {
     display: flex;
@@ -76,6 +111,14 @@ export default {
   &__link {
     align-self: flex-end;
 
+    &_theme_light {
+      color: black;
+    }
+
+    &_theme_dark {
+      color: white;
+    }
+
     &:hover {
       color: #4c4c4c;
     }
@@ -87,6 +130,14 @@ export default {
     text-align: center;
     margin-top: 50px;
     color: black;
+
+    &_theme_light {
+      color: black;
+    }
+
+    &_theme_dark {
+      color: white;
+    }
   }
 
   &__link-text:after {
@@ -110,15 +161,39 @@ export default {
     border-bottom: #000000 solid 2px;
     text-align: center;
     width: 100%;
+
+    &_theme_light {
+      color: black;
+    }
+
+    &_theme_dark {
+      color: white;
+    }
   }
 
   &__text {
     margin-bottom: 10px;
+
+    &_theme_light {
+      color: black;
+    }
+
+    &_theme_dark {
+      color: white;
+    }
   }
 
   &__image-title {
     font-size: 28px;
     margin-bottom: 10px;
+
+    &_theme_light {
+      color: black;
+    }
+
+    &_theme_dark {
+      color: white;
+    }
   }
 
   &__image {
