@@ -1,12 +1,16 @@
 <template>
-  <section class="contacts">
+  <section ref="contacts" class="contacts">
     <div class="contacts__container">
       <h2 class="contacts__title">Контакты</h2>
       <p class="contacts__text">
         Хочешь узнать больше или просто пообщаться? <br />Напиши!
       </p>
-      <!--<my-form />-->
-      <button-form theme_sky="true" margin-bottom_normal="true"
+      <p class="contacts__text">
+        Хочешь узнать кто я? <br />
+        <span class="contacts__link" @click="openAboutSection">Посмотри!</span>
+      </p>
+
+      <button-form theme="sky" indentDirection="bottom" @btnClick="togglePopup"
         >Написать
       </button-form>
       <a
@@ -24,14 +28,24 @@
 </template>
 
 <script>
-import Form from '~/components/UI/Form'
 import ButtonMain from '~/components/UI/ButtonMain'
 
 export default {
   name: 'about',
   components: {
-    'my-form': Form,
     'button-form': ButtonMain,
+  },
+  methods: {
+    openAboutSection() {
+      //this.$router.push(`/`);
+      this.$refs.contacts.scrollIntoView({
+        block: 'start',
+        behavior: 'smooth',
+      })
+    },
+    togglePopup() {
+      this.$store.commit('popup/togglePopup')
+    },
   },
 }
 </script>
@@ -55,6 +69,10 @@ export default {
   &__text {
     font-size: 20px;
     margin-bottom: 20px;
+  }
+
+  &__link {
+    color: red;
   }
 
   &__button {

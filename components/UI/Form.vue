@@ -1,24 +1,49 @@
 <template>
-  <form class="form" action="https://formspree.io/meqrknjg" method="post">
+  <form class="form" method="post">
     <div class="form__subject-container">
-      <label class="form__label" for="email">Email</label>
-      <input class="form__input" id="email" type="email" />
+      <label class="form__label" for="subj">Тема:</label>
+      <input
+        v-model="subj"
+        class="form__input"
+        id="subj"
+        type="text"
+        placeholder="Тема письма"
+        required
+        @input="$emit('input', $event.target.value)"
+      />
     </div>
     <div class="form__body-container">
       <label class="form__label form__body-label" for="text">Текст:</label>
       <textarea
+        v-model="text"
         class="form__input form__textarea"
         id="text"
-        name="Body"
+        placeholder="Сообщение"
+        required
       ></textarea>
     </div>
-    <button class="form__button" type="submit">Отправить письмо</button>
+    <button @click.prevent="sendForm" class="form__button" type="submit">
+      Отправить письмо
+    </button>
   </form>
 </template>
 
 <script>
 export default {
   name: 'Form',
+  methods: {
+    sendForm() {
+      window.open(
+        `mailto:ivansenkov.web@gmail.com?subject=${this.subj}&body=${this.text}`
+      )
+    },
+  },
+  data() {
+    return {
+      subj: '',
+      text: '',
+    }
+  },
 }
 </script>
 
@@ -41,17 +66,19 @@ export default {
   &__button {
     max-width: 200px;
     height: 30px;
-    border-radius: 5px;
-    background-color: #a7a08d;
   }
 
   &__input {
+    min-width: 196px;
     background: transparent;
-    color: white;
-    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    padding: 5px;
   }
 
   &__textarea {
+    color: #000000;
+    min-height: 200px;
   }
 
   &__body-label {

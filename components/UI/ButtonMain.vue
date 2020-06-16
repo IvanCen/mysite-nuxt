@@ -1,10 +1,8 @@
 <template>
   <button
     class="button"
-    :class="{
-      button_theme_sky: 'theme_sky',
-      'button_margin-bottom_normal': 'margin-bottom_normal',
-    }"
+    :class="[`button_theme_${theme}`, `button_indent_${indentDirection}`]"
+    @click="$emit('btnClick')"
   >
     <slot>text</slot>
   </button>
@@ -13,7 +11,7 @@
 <script>
 export default {
   name: 'buttonMain',
-  props: ['theme_sky', 'margin-bottom_normal'],
+  props: ['theme', 'indentDirection'],
 }
 </script>
 
@@ -31,10 +29,10 @@ export default {
   }
 
   &_theme_sky {
-    background-color: rgba(215, 222, 236, 0.8);
+    background-color: rgba(220, 226, 238, 0.8);
   }
 
-  &_margin-bottom_normal {
+  &_indent_bottom {
     margin-bottom: 20px;
   }
 }

@@ -1,12 +1,27 @@
 <template>
   <header class="header">
-    <nuxt-link to="/" v-if="$route.path !== '/'" class="header__logo"
-      >Logo</nuxt-link
-    >
-    <h1 class="header__logo" v-else>Logo</h1>
+    <nuxt-link to="/" v-if="$route.path !== '/'" class="header__logo">
+      <img class="header__logo" src="images/logo/my-logo.svg" alt="Логотип" />
+    </nuxt-link>
+    <img
+      class="header__logo"
+      v-else
+      src="images/logo/my-logo.svg"
+      alt="Логотип"
+    />
     <nav class="header__menu">
-      <nuxt-link to="/portfolio" class="header__link">Портфолио</nuxt-link>
-      <nuxt-link to="/contacts" class="header__link">Контакты</nuxt-link>
+      <nuxt-link
+        v-if="$route.path !== '/portfolio'"
+        to="/portfolio"
+        class="header__link"
+        >Портфолио</nuxt-link
+      >
+      <nuxt-link
+        v-if="$route.path !== '/contacts'"
+        to="/contacts"
+        class="header__link"
+        >Контакты</nuxt-link
+      >
     </nav>
   </header>
 </template>
@@ -28,7 +43,8 @@ export default {}
   border-bottom: 1px solid #000000;
 
   &__logo {
-    font-size: 26px;
+    width: 70px;
+    height: 70px;
   }
 
   &__link {

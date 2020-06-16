@@ -1,7 +1,7 @@
 <template>
   <div class="wraper">
     <description-section />
-    <about-section />
+    <about-section ref="about" />
     <skill-section />
     <a class="button-up" href="#main">&and;</a>
   </div>
@@ -18,10 +18,12 @@ export default {
     'skill-section': Skill,
     'description-section': Description,
   },
-  data() {
-    return {
-      text: '',
-    }
+  beforeMount() {
+    this.$store.dispatch('project/fetchLessons')
+  },
+
+  async fetch({ store }) {
+    await store.dispatch('project/fetchLessons')
   },
 }
 </script>

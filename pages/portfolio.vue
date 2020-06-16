@@ -46,47 +46,10 @@
 <script>
 export default {
   name: 'about',
-  data() {
-    return {
-      cards: [
-        {
-          id: 1,
-          title: 'Учебная страница',
-          text: '',
-          image: './../images/learn.png',
-          demoLink: 'https://ivancen.github.io/yandex__project_learn-to-learn/',
-          githubLink:
-            'https://github.com/IvanCen/yandex__project_learn-to-learn',
-        },
-        {
-          id: 2,
-          title: 'Проект Место',
-          text: 'Настоящая страна не в выпусках новостей, а здесь.',
-          image: './../images/polka.jpg',
-          demoLink: 'https://ivancen.github.io/yandex__project_learn-to-learn/',
-          githubLink:
-            'https://github.com/IvanCen/yandex__project_learn-to-learn',
-        },
-        {
-          id: 3,
-          title: 'Сервис Место',
-          text: 'Место для Российских фото',
-          image: './../images/cover.jpg',
-          demoLink: 'https://ivancen.github.io/yandex__project_learn-to-learn/',
-          githubLink:
-            'https://github.com/IvanCen/yandex__project_learn-to-learn',
-        },
-        {
-          id: 4,
-          title: 'Инклюзивный музей',
-          text: 'Музей для всех',
-          image: './../images/musem.jpg',
-          demoLink: 'https://ivancen.github.io/yandex__project_learn-to-learn/',
-          githubLink:
-            'https://github.com/IvanCen/yandex__project_learn-to-learn',
-        },
-      ],
-    }
+  computed: {
+    cards() {
+      return this.$store.getters['project/getProjectCards']
+    },
   },
 }
 </script>
@@ -143,7 +106,7 @@ export default {
     font-size: 36px;
     margin-top: 35px;
     margin-bottom: 35px;
-    padding-bottom: 10px;
+    padding-bottom: 25px;
     border-bottom: #000000 solid 2px;
     text-align: center;
     width: 100%;
