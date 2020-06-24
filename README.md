@@ -1,22 +1,33 @@
-# mysite-nuxt
+# Business card site
+## Что это?
+Сайт-визитка, на нем располагается небольшая информация обо мне и будут публиковаться проекты/работы.
 
-> My unreal Nuxt.js project
+## Как открыть?
+Сайт доступен по ссылке https://ivancen.github.io
 
-## Build Setup
+## Демо 
+![Main page](https://github.com/IvanCen/IvanCen.github.io/blob/master/images/main_pic.png "Скрин главной страницы")
+
+
+
+## Сборка
 
 ```bash
-# install dependencies
+# Установить зависимости
 $ npm install
 
-# serve with hot reload at localhost:3000
+# Запустить сервер на localhost:3000
 $ npm run dev
 
-# build for production and launch server
+# Собрать сборку для продакшена и запустить
 $ npm run build
 $ npm run start
 
-# generate static project
+# Создать сборку статичного сайта
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Для дополнительных деталей посетите [Nuxt.js docs](https://nuxtjs.org).
+
+## License
+[MIT](LICENSE)
