@@ -1,11 +1,6 @@
 <template>
   <div class="wraper">
-    <description-section />
-    <about-section ref="about" />
-    <skill-section />
-    <a :class="['button-up', `button-up_theme_${getIsThemeLight}`]" href="#main"
-      >&and;</a
-    >
+    <swiper></swiper>
   </div>
 </template>
 
@@ -13,16 +8,33 @@
 import About from '~/components/About'
 import Skill from '~/components/Skill'
 import Description from '~/components/Description'
+import ScrollToComponent from '~/components/UI/ScrollToComponent'
+import ButtonDown from '~/components/UI/ButtonDown'
+import Swiper from '~/components/UI/Swiper'
 
 export default {
+  data() {
+    return {}
+  },
   components: {
+    'description-section': Description,
     'about-section': About,
     'skill-section': Skill,
-    'description-section': Description,
+    'scroll-to-component': ScrollToComponent,
+    'button-down': ButtonDown,
+    swiper: Swiper,
+  },
+  methods: {
+    scroll() {
+      this.$refs.element.scrollTo()
+    },
   },
   computed: {
     getIsThemeLight() {
       return this.$store.getters['pageTheme/getIsThemeLight']
+    },
+    getScrollToDescription() {
+      return this.$store.getters['scroll/getScrollToDescription']
     },
   },
 }

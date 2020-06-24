@@ -6,7 +6,7 @@
 Сайт доступен по ссылке https://ivancen.github.io
 
 ## Демо 
-![Main page](https://github.com/IvanCen/IvanCen.github.io/blob/master/images/main_pic.png "Скрин главной страницы")
+![Main page](https://github.com/IvanCen/mysite-nuxt/blob/master/static/images/main_pic.png "Скрин главной страницы")
 
 
 

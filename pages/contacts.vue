@@ -1,15 +1,13 @@
 <template>
-  <section ref="contacts" class="contacts">
+  <section
+    :class="['contacts', `contacts_theme_${getIsThemeLight}`]"
+    ref="contacts"
+  >
     <div class="contacts__container">
       <h2 class="contacts__title">Контакты</h2>
       <p class="contacts__text">
         Хочешь узнать больше или просто пообщаться? <br />Напиши!
       </p>
-      <p class="contacts__text">
-        Хочешь узнать кто я? <br />
-        <span class="contacts__link" @click="openAboutSection">Посмотри!</span>
-      </p>
-
       <button-form
         class="contacts__button"
         theme="sky"
@@ -39,14 +37,12 @@ export default {
   components: {
     'button-form': ButtonMain,
   },
-  methods: {
-    openAboutSection() {
-      //this.$router.push(`/`);
-      this.$refs.contacts.scrollIntoView({
-        block: 'start',
-        behavior: 'smooth',
-      })
+  computed: {
+    getIsThemeLight() {
+      return this.$store.getters['pageTheme/getIsThemeLight']
     },
+  },
+  methods: {
     togglePopup() {
       this.$store.commit('popup/togglePopup')
     },
@@ -60,10 +56,20 @@ export default {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - 80px);
-  background: url('/images/3.jpg') no-repeat center / cover fixed;
+  height: calc(100vh - 70px);
+
   color: #fff;
   padding: 20px;
+
+  &_theme_light {
+    background: url('/images/forest-light.jpg') no-repeat center / cover fixed
+      white;
+  }
+
+  &_theme_dark {
+    background: url('/images/forest-dark.jpg') no-repeat center / cover fixed
+      #3d4f61;
+  }
 
   &__title {
     font-size: 24px;

@@ -15,3 +15,9 @@
   src: url('./JetBrainsMono-Medium.woff2');
   font-weight: 500;
 }
+
+@font-face {
+  font-family: 'Montserrat-ExtraBold';
+  src: url('./Montserrat-ExtraBold.ttf');
+  font-weight: 600;
+}

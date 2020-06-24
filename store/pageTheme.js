@@ -9,7 +9,6 @@ export const mutations = {
     } else {
       return (state.themeLight = 'light')
     }
-    //return (state.themeLight = !state.themeLight)
   },
 }
 

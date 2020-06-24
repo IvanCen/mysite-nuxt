@@ -1,23 +1,18 @@
 <template>
-  <section class="description">
-    <div class="description__container-header">
-      <h1 class="description__title">Иван Сеньков</h1>
-      <h2 class="description__subtitle description__subtitle_border">
-        Фронтенд / Веб разработчик
-      </h2>
-      <h2 class="description__subtitle">Санкт-Петербург</h2>
-      <img
-        class="description__image"
-        src="/images/saint-petersburg-bridge.png"
-        alt="Разведенный мосты Санкт-Петербурга"
-      />
-    </div>
+  <section :class="['description']">
+    <!--     <div :class="['description__photo', `description__photo_theme_${getIsThemeLight}`]"></div>-->
+    <div class="description__container-header"></div>
   </section>
 </template>
 
 <script>
 export default {
   name: 'Description',
+  computed: {
+    getIsThemeLight() {
+      return this.$store.getters['pageTheme/getIsThemeLight']
+    },
+  },
 }
 </script>
 
@@ -32,7 +27,35 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url('/images/1.jpg') no-repeat center / cover fixed;
+
+  &__photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-bottom: 100%;
+    width: 100%;
+    height: 100%;
+
+    &_theme_light {
+      background: url('/images/peak-mountain-light.jpg') no-repeat center /
+        cover fixed white;
+    }
+
+    &_theme_dark {
+      background: url('/images/peak-mountain-dark.jpg') no-repeat center / cover
+        fixed #3d4f61;
+    }
+  }
+
+  &_theme_light {
+    background: url('/images/peak-mountain-light.jpg') no-repeat center / cover
+      fixed white;
+  }
+
+  &_theme_dark {
+    background: url('/images/peak-mountain-dark.jpg') no-repeat center / cover
+      fixed #3d4f61;
+  }
 
   &__container-header {
     width: 65%;
@@ -41,6 +64,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     margin: auto;
+    z-index: 1;
   }
 
   &__title {
@@ -65,8 +89,8 @@ export default {
       border-bottom: 1px solid white;
 
       /*@media screen and (max-width: 500px) {
-        border-bottom: none;
-      }*/
+          border-bottom: none;
+        }*/
     }
   }
 
