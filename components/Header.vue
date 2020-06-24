@@ -1,28 +1,107 @@
 <template>
   <header :class="[`header`, `header_theme_${getIsThemeLight}`]">
-    <nuxt-link to="/" v-if="$route.path !== '/'" class="header__logo">
-      <img
-        class="header__logo"
-        :src="`images/logo/my-logo-${getIsThemeLight}.svg`"
-        alt="Логотип"
-      />
+    <nuxt-link to="/" class="header__logo">
+      <svg
+        :class="[`header__logo`, `header__logo_theme_${getIsThemeLight}`]"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 640 640"
+      >
+        <defs>
+          <text
+            id="bm7vkAETA"
+            x="539.18"
+            y="245.6"
+            font-size="384"
+            font-family="Montserrat-ExtraBold"
+            font-weight="normal"
+            font-style="normal"
+            letter-spacing="0"
+            alignment-baseline="before-edge"
+            transform="matrix(1 0 0 1 -219.1820040899795 -159.25308345033272)"
+            style="line-height:100%"
+            xml:space="preserve"
+            dominant-baseline="text-before-edge"
+          >
+            <tspan
+              x="539.18"
+              dy="0em"
+              alignment-baseline="before-edge"
+              dominant-baseline="text-before-edge"
+              text-anchor="middle"
+            >
+              ICe
+            </tspan>
+          </text>
+          <style id="montserratnormalnormal">
+            @font-face {
+              font-family: 'Montserrat';
+              font-weight: normal;
+            }
+          </style>
+          <path
+            d="M113.51 462.24L7.1 461.77L7.2 438.16L113.61 438.62L113.51 462.24Z"
+            id="g51ZqpQvHd"
+          ></path>
+          <path
+            d="M398.93 440.38L145.77 439.27L145.67 462.89L398.83 463.99L398.93 440.38Z"
+            id="br1gzpoly"
+          ></path>
+          <path
+            d="M627.7 441.93L420.14 441.03L420.05 461.33L627.62 462.24L627.7 441.93Z"
+            id="c1eRjQTyyP"
+          ></path>
+        </defs>
+        <g>
+          <g>
+            <g id="c2qQNy0WiB">
+              <use
+                xlink:href="#bm7vkAETA"
+                opacity="1"
+                fill="#000000"
+                fill-opacity="1"
+              ></use>
+            </g>
+            <g>
+              <use
+                xlink:href="#g51ZqpQvHd"
+                opacity="1"
+                fill="#000000"
+                fill-opacity="1"
+              ></use>
+            </g>
+            <g>
+              <use
+                xlink:href="#br1gzpoly"
+                opacity="1"
+                fill="#000000"
+                fill-opacity="1"
+              ></use>
+            </g>
+            <g>
+              <use
+                xlink:href="#c1eRjQTyyP"
+                opacity="1"
+                fill="#000000"
+                fill-opacity="1"
+              ></use>
+            </g>
+          </g>
+        </g>
+      </svg>
     </nuxt-link>
-    <img
-      class="header__logo"
-      v-else
-      :src="`images/logo/my-logo-${getIsThemeLight}.svg`"
-      alt="Логотип"
-    />
     <nav class="header__menu">
       <nuxt-link
-        v-if="$route.path !== '/portfolio'"
+        v-if="!/\/portfolio\/?/.test($route.path)"
         to="/portfolio"
         :class="[`header__link`, `header__link_theme_${getIsThemeLight}`]"
         >Портфолио
       </nuxt-link>
       <nuxt-link
         :event="disabledContactsLink ? '' : 'click'"
-        v-if="$route.path !== '/contacts'"
+        v-if="!/\/contacts\/?/.test($route.path)"
         to="/contacts"
         :class="[`header__link`, `header__link_theme_${getIsThemeLight}`]"
         >Контакты
@@ -138,10 +217,9 @@ export default {
 }
 
 .header {
-  z-index: 1;
-  min-height: 70px;
+  z-index: 2;
+  max-height: 70px;
   display: flex;
-  position: sticky;
   top: 0;
   justify-content: space-around;
   align-items: center;
@@ -164,6 +242,13 @@ export default {
   &__logo {
     width: 70px;
     height: 70px;
+
+    &_theme_light {
+    }
+
+    &_theme_dark {
+      filter: brightness(0) invert(1);
+    }
   }
 
   &__list-item {

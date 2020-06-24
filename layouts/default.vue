@@ -3,7 +3,6 @@
     <a href="" id="main"></a>
     <main-header />
     <nuxt />
-    <main-footer />
     <transition name="popup__fade">
       <overlay v-if="popupShown" @overlayClick="togglePopup" />
     </transition>

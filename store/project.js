@@ -62,7 +62,7 @@ export const getters = {
   }
 }*/
 
-export const actions = {
+/*export const actions = {
   async fetchLessons({ commit }) {
     const lessons = await this.$axios.$get('https://api-test.pa7lux.ru/streams')
     console.log(lessons)
@@ -71,4 +71,4 @@ export const actions = {
       value: lessons,
     })
   },
-}
+}*/

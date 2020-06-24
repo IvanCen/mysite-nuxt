@@ -1,5 +1,5 @@
 <template>
-  <div class="popup">
+  <div :class="['popup', `popup_theme_${getIsThemeLight}`]">
     <div
       :class="['close', `close_theme_${theme}`]"
       @click="$emit('closeClick')"
@@ -13,6 +13,11 @@ export default {
   name: 'Popup',
   props: ['theme'],
   show: 'popup_shown',
+  computed: {
+    getIsThemeLight() {
+      return this.$store.getters['pageTheme/getIsThemeLight']
+    },
+  },
 }
 </script>
 
@@ -31,6 +36,14 @@ export default {
   color: #000000;
   z-index: 2;
   border-radius: 6px;
+
+  &_theme_light {
+    background-color: white;
+  }
+
+  &_theme_dark {
+    background-color: #3d4f61;
+  }
 
   @media screen and (max-width: 400px) {
     padding: 20px;

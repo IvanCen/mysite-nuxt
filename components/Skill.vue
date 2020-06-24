@@ -1,6 +1,5 @@
 <template>
-  <section class="skill">
-    <h2 class="skill__title">Я использую такие инструменты разработки как</h2>
+  <section :class="['skill', `skill_theme_${getIsThemeLight}`]">
     <div class="skill__icon-container">
       <div class="skill__item ">
         <img class="skill__icon" src="images\logo\html.svg" alt="icon_html" />
@@ -57,21 +56,28 @@
 <script>
 export default {
   name: 'Skill',
+  computed: {
+    getIsThemeLight() {
+      return this.$store.getters['pageTheme/getIsThemeLight']
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .skill {
   color: white;
-  width: 100%;
-  min-height: calc(100vh - 80px);
+
   box-sizing: border-box;
-  background: url(/images/5.jpg) no-repeat center / cover fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   padding: 40px 20px;
+
+  @media screen and (max-width: 500px) {
+    padding: 20px 10px;
+  }
 
   &__item {
     display: flex;
@@ -95,6 +101,18 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     grid-gap: 20px;
+
+    @media screen and (max-width: 1025px) {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(90px, 2fr));
+      grid-gap: 10px;
+    }
+
+    @media screen and (max-width: 900px) {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 2fr));
+      grid-gap: 5px;
+    }
   }
 
   &__icon {
@@ -102,6 +120,17 @@ export default {
     width: 125px;
     height: 125px;
     margin-bottom: 10px;
+
+    @media screen and (max-width: 1025px) {
+      width: 100px;
+      height: 100px;
+    }
+
+    @media screen and (max-width: 900px) {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 0;
+    }
   }
 
   &__item-text {
@@ -109,6 +138,10 @@ export default {
     text-align: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+
+    @media screen and (max-width: 500px) {
+      font-size: 16px;
+    }
   }
 
   &__item:hover .skill__item-text {

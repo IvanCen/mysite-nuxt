@@ -8,37 +8,6 @@
     >
       Портфолио
     </h2>
-    <!--<div class="portfolio__card">
-      <h3 class="title portfolio__image-title">Учебная страница</h3>
-      <a href="https://ivancen.github.io/yandex__project_learn-to-learn/" class="link">
-        <img class="portfolio__image" src="images/learn.png" alt="Учебные книги"/>
-      </a>
-      <a href="https://github.com/IvanCen/yandex__project_learn-to-learn" class="portfolio__link">githab</a>
-    </div>
-    <div class="portfolio__card">
-      <h3 class="title portfolio__image-title">Проект Место</h3>
-      <a href="https://ivancen.github.io/yandex__project_mesto/" class="link">
-        <img class="portfolio__image" src="images/polka.jpg" alt="Картинка проекта Mesto"/>
-        <q class="portfolio__quote">Настоящая страна не в выпусках новостей, а здесь.</q>
-      </a>
-      <a href="https://github.com/IvanCen/yandex__project_mesto" class="portfolio__link">githab</a>
-    </div>
-    <div class="portfolio__card">
-      <h3 class="title portfolio__image-title">Сервис Место</h3>
-      <a href="https://ivancen.github.io/yandex__project_mesto-photo/" class="link">
-        <img class="portfolio__image" src="images/cover.jpg" alt="Проект Место для фотографий"/>
-        <p class="portfolio__text">Место для Российских фото</p>
-      </a>
-      <a href="https://github.com/IvanCen/yandex__project_mesto-photo" class="portfolio__link">githab</a>
-    </div>
-    <div class="portfolio__card">
-      <h3 class="title portfolio__image-title">Инклюзивный музей</h3>
-      <a href="https://ivancen.github.io/museum_project/" class="link">
-        <img class="portfolio__image" src="images/musem.jpg" alt="Проект Инклюзивный Музей"/>
-        <p class="portfolio__text">Музей для всех</p>
-      </a>
-      <a href="https://github.com/IvanCen/museum_project" class="portfolio__link">githab</a>
-    </div>-->
     <div v-for="card in cards" :key="card.id" class="portfolio__card">
       <h3
         :class="[
@@ -71,6 +40,11 @@
 <script>
 export default {
   name: 'about',
+  data() {
+    return {
+      text: 'hello',
+    }
+  },
   computed: {
     cards() {
       return this.$store.getters['project/getProjectCards']

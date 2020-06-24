@@ -1,5 +1,5 @@
 <template>
-  <form class="form" method="post">
+  <form :class="['form', `form_theme_${getIsThemeLight}`]" method="post">
     <div class="form__subject-container">
       <label class="form__label" for="subj">Тема:</label>
       <input
@@ -16,10 +16,15 @@
       <label class="form__label form__body-label" for="text">Текст:</label>
       <textarea
         v-model="text"
-        class="form__input form__textarea"
+        class=" "
         id="text"
         placeholder="Сообщение"
         required
+        :class="[
+          'form__input',
+          'form__textarea',
+          `form__textarea_theme_${getIsThemeLight}`,
+        ]"
       ></textarea>
     </div>
     <button @click.prevent="sendForm" class="form__button" type="submit">
@@ -38,6 +43,11 @@ export default {
       )
     },
   },
+  computed: {
+    getIsThemeLight() {
+      return this.$store.getters['pageTheme/getIsThemeLight']
+    },
+  },
   data() {
     return {
       subj: '',
@@ -52,6 +62,14 @@ export default {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+
+  &_theme_light {
+    color: black;
+  }
+
+  &_theme_dark {
+    color: white;
+  }
 
   &__body-container {
     display: flex;
@@ -77,8 +95,15 @@ export default {
   }
 
   &__textarea {
-    color: #000000;
     min-height: 200px;
+
+    &_theme_light {
+      color: black;
+    }
+
+    &_theme_dark {
+      color: white;
+    }
   }
 
   &__body-label {
