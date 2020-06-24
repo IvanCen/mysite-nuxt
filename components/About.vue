@@ -1,5 +1,5 @@
 <template>
-  <section class="about">
+  <section :class="[`about`, `about_theme_${getIsThemeLight}`]">
     <div class="container about__container">
       <h2 class="title about__title">Обо мне</h2>
       <div class="about__text-container">
@@ -8,7 +8,7 @@
         </p>
         <p class="about__text">
           Я интересуюсь разработкой веб сайтов и прошел курсы "Веб разработки" в
-          Яндекс Практикуме.
+          Яндекс Практикум.
         </p>
         <p class="about__text">
           Готов реализовать интересные проекты с замечательными людьми.
@@ -21,6 +21,16 @@
 <script>
 export default {
   name: 'About',
+  methods: {
+    switchTheme() {
+      this.$store.commit('pageTheme/switchTheme')
+    },
+  },
+  computed: {
+    getIsThemeLight() {
+      return this.$store.getters['pageTheme/getIsThemeLight']
+    },
+  },
 }
 </script>
 
@@ -29,8 +39,18 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
-  padding: 0 40px;
+  min-height: 350px;
+  padding: 40px;
+
+  &_theme_light {
+    background-color: white;
+    color: black;
+  }
+
+  &_theme_dark {
+    background-color: #474a4c;
+    color: white;
+  }
 
   &__container {
     align-items: normal;
@@ -39,7 +59,7 @@ export default {
   &__text-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    grid-gap: 10px;
+    grid-gap: 20px;
   }
 
   &__title {
